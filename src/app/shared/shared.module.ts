@@ -24,6 +24,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { EntityModule } from '../entity/entity.module';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -120,7 +122,10 @@ import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
     MatSlideToggleModule,
     MatDividerModule,
 
-    FontAwesomeModule
+    FontAwesomeModule,
+
+    CKEditorModule,
+    EntityModule
   ],
   declarations: [
     BigInputComponent,
@@ -159,7 +164,9 @@ import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
 
     BigInputComponent,
     BigInputActionComponent,
-    RtlSupportDirective
+    RtlSupportDirective,
+
+    CKEditorModule
   ]
 })
 export class SharedModule {}

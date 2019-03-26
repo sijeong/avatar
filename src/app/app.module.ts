@@ -11,6 +11,10 @@ import { StaticModule } from './static';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { UsermanagementModule } from './usermanagement/usermanagement.module';
+import { OptionmanagementModule } from './optionmanagement/optionmanagement.module';
+import { NoticeModule } from './notice/notice.module';
+
 @NgModule({
   imports: [
     // angular
@@ -26,7 +30,16 @@ import { AppComponent } from './app.component';
     SettingsModule,
 
     // app
-    AppRoutingModule
+    AppRoutingModule,
+
+    //usermanagement
+    UsermanagementModule,
+
+    //optionmanagement
+    OptionmanagementModule,
+
+    //notice
+    NoticeModule
   ],
   declarations: [AppComponent],
   providers: [],

@@ -27,7 +27,8 @@ export class ExamplesComponent implements OnInit {
     { link: 'crud', label: 'anms.examples.menu.crud' },
     { link: 'form', label: 'anms.examples.menu.form' },
     { link: 'notifications', label: 'anms.examples.menu.notifications' },
-    { link: 'authenticated', label: 'anms.examples.menu.auth', auth: true }
+    { link: 'authenticated', label: 'anms.examples.menu.auth', auth: true },
+    { link: 'editor', label: 'avatar.editor' }
   ];
 
   constructor(private store: Store<State>) {}

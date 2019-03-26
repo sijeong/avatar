@@ -11,6 +11,7 @@ import { StockMarketContainerComponent } from './stock-market/components/stock-m
 import { CrudComponent } from './crud/components/crud.component';
 import { FormComponent } from './form/components/form.component';
 import { NotificationsComponent } from './notifications/components/notifications.component';
+import { EditorComponent } from '@app/avatar/editor/editor.component';
 
 const routes: Routes = [
   {
@@ -62,6 +63,11 @@ const routes: Routes = [
         component: AuthenticatedComponent,
         canActivate: [AuthGuardService],
         data: { title: 'anms.examples.menu.auth' }
+      },
+      {
+        path: 'editor',
+        component: EditorComponent,
+        data: { title: 'avatar.editor' }
       }
     ]
   }
