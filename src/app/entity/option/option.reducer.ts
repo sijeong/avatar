@@ -2,17 +2,20 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Option } from './option.model';
 import { OptionActions, OptionActionTypes } from './option.actions';
 
-export interface State extends EntityState<Option> {
+export interface OptionState extends EntityState<Option> {
   // additional entities state properties
 }
 
 export const adapter: EntityAdapter<Option> = createEntityAdapter<Option>();
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: OptionState = adapter.getInitialState({
   // additional entity state properties
 });
 
-export function reducer(state = initialState, action: OptionActions): State {
+export function optionReducer(
+  state = initialState,
+  action: OptionActions
+): OptionState {
   switch (action.type) {
     case OptionActionTypes.AddOption: {
       return adapter.addOne(action.payload.option, state);

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
+import { ApiTestComponent } from '../../entity/api-test/api-test.component';
 @Component({
   selector: 'anms-option-main',
   templateUrl: './option-main.component.html',

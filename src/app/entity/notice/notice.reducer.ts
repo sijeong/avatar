@@ -2,17 +2,20 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Notice } from './notice.model';
 import { NoticeActions, NoticeActionTypes } from './notice.actions';
 
-export interface State extends EntityState<Notice> {
+export interface NoticeState extends EntityState<Notice> {
   // additional entities state properties
 }
 
 export const adapter: EntityAdapter<Notice> = createEntityAdapter<Notice>();
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: NoticeState = adapter.getInitialState({
   // additional entity state properties
 });
 
-export function reducer(state = initialState, action: NoticeActions): State {
+export function reducer(
+  state = initialState,
+  action: NoticeActions
+): NoticeState {
   switch (action.type) {
     case NoticeActionTypes.AddNotice: {
       return adapter.addOne(action.payload.notice, state);

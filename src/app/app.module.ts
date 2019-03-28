@@ -15,6 +15,16 @@ import { UsermanagementModule } from './usermanagement/usermanagement.module';
 import { OptionmanagementModule } from './optionmanagement/optionmanagement.module';
 import { NoticeModule } from './notice/notice.module';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemWebService } from './entity/in-mem-web-service';
+
+// import { StoreModule } from '@ngrx/store';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+// import {reducers, metaReducers} from './entity/reducers';
+// import { environment } from '../environments/environment';
+
 @NgModule({
   imports: [
     // angular
@@ -39,7 +49,15 @@ import { NoticeModule } from './notice/notice.module';
     OptionmanagementModule,
 
     //notice
-    NoticeModule
+    NoticeModule,
+
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemWebService, {
+      passThruUnknownUrl: true
+    })
+
+    // StoreModule.forRoot(reducers, { metaReducers }),
+    // !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   declarations: [AppComponent],
   providers: [],

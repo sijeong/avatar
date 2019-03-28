@@ -25,6 +25,7 @@ import { CustomSerializer } from './router/custom-serializer';
 import { NotificationService } from './notifications/notification.service';
 import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
 
+import { OptionEffects } from '../entity/option/option.effects';
 @NgModule({
   imports: [
     // angular
@@ -34,7 +35,7 @@ import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effe
     // ngrx
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, GoogleAnalyticsEffects]),
+    EffectsModule.forRoot([AuthEffects, GoogleAnalyticsEffects, OptionEffects]),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({

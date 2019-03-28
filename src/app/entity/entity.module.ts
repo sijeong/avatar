@@ -4,15 +4,28 @@ import { StoreModule } from '@ngrx/store';
 import * as fromUser from './user/user.reducer';
 import * as fromOption from './option/option.reducer';
 import * as fromNotice from './notice/notice.reducer';
-// import { User } from './user/user.model'
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './user/user.effects';
+import { CoreModule } from '../core';
+
+import { NoticeEffects } from './notice/notice.effects';
+
+import { OptionEffects } from './option/option.effects';
+
+import { ApiTestComponent } from './api-test/api-test.component';
+
+import * as fromState from './reducers';
+
 @NgModule({
-  declarations: [],
+  declarations: [ApiTestComponent],
   imports: [
     CommonModule,
     StoreModule.forFeature('user', fromUser.reducer),
-    StoreModule.forFeature('option', fromOption.reducer),
-    StoreModule.forFeature('notice', fromNotice.reducer)
+    StoreModule.forFeature('option', fromOption.optionReducer),
+    StoreModule.forFeature('notice', fromNotice.reducer),
+    EffectsModule.forFeature([UserEffects, NoticeEffects, OptionEffects])
+    // StoreModule.forFeature('state', fromState.reducers, { metaReducers: fromState.metaReducers })
   ],
-  exports: []
+  exports: [ApiTestComponent]
 })
 export class EntityModule {}
