@@ -11,6 +11,7 @@ import * as fromNotice from '../notice/notice.reducer';
 import * as fromOption from '../option/option.reducer';
 
 import * as fromStore from '../reducers';
+import { LoadOptions, RequestOptions } from '../option/option.actions';
 @Component({
   selector: 'anms-api-test',
   templateUrl: './api-test.component.html',
@@ -19,7 +20,9 @@ import * as fromStore from '../reducers';
 })
 export class ApiTestComponent implements OnInit {
   users: User[];
-  options$: Observable<Option[]>;
+  options$: Observable<Option[]> = this.store.pipe(
+    select(fromOption.selectAllOptions)
+  );
   //  = this.store.pipe(select(selectAll));
   notices: Notice[];
 
@@ -29,8 +32,9 @@ export class ApiTestComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.store.dispatch(new RequestOptions());
     // this.svc.getOptions().subscribe(d => {this.options = d; console.log(d)});
-    this.options$ = this.svc.getOptions();
-    // this.options$ = this.store.pipe(select(fromOption.selectAll));
+    // this.options$ = this.svc.getOptions();
+    // this.options$ = this.store.pipe(select(fromOption.selectAllOptions));
   }
 }

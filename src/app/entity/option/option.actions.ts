@@ -3,7 +3,9 @@ import { Update } from '@ngrx/entity';
 import { Option } from './option.model';
 
 export enum OptionActionTypes {
+  RequestOptions = '[Option] Request Options',
   LoadOptions = '[Option] Load Options',
+  LoadOptionsSuccess = '[Option] Load Option Sucess',
   AddOption = '[Option] Add Option',
   UpsertOption = '[Option] Upsert Option',
   AddOptions = '[Option] Add Options',
@@ -14,13 +16,20 @@ export enum OptionActionTypes {
   DeleteOptions = '[Option] Delete Options',
   ClearOptions = '[Option] Clear Options'
 }
-
+export class RequestOptions implements Action {
+  readonly type = OptionActionTypes.RequestOptions;
+}
 export class LoadOptions implements Action {
   readonly type = OptionActionTypes.LoadOptions;
 
   constructor(public payload: { options: Option[] }) {}
 }
 
+export class LoadOptionsSuccess implements Action {
+  readonly type = OptionActionTypes.LoadOptionsSuccess;
+
+  constructor(public payload: { options: Option[] }) {}
+}
 export class AddOption implements Action {
   readonly type = OptionActionTypes.AddOption;
 
