@@ -1,4 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ApiTestComponent } from '../../entity/api-test/api-test.component';
+import { Observable } from 'rxjs';
+import { Notice } from '@app/entity/notice/notice.model';
+import { FakeService } from '@app/entity/fake.service';
 
 @Component({
   selector: 'anms-notice-main',
@@ -7,7 +11,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NoticeMainComponent implements OnInit {
-  constructor() {}
+  notice$: Observable<Notice[]>;
+  constructor(private svc: FakeService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.notice$ = this.svc.getNotices();
+  }
 }

@@ -19,18 +19,22 @@ import * as fromStore from '../reducers';
 })
 export class ApiTestComponent implements OnInit {
   users: User[];
-  options$: Observable<Option[]>;
+  options: Option[];
   //  = this.store.pipe(select(selectAll));
-  notices: Notice[];
+  notices$: Observable<Notice[]>;
+  options$: Observable<Option[]>;
 
   constructor(
     private svc: FakeService,
-    private store: Store<fromOption.OptionState>
+    private storeoption: Store<fromOption.OptionState>
   ) {}
 
   ngOnInit() {
     // this.svc.getOptions().subscribe(d => {this.options = d; console.log(d)});
+    // this.options = this.svc.getOptions();
+    // this.svc.getOptions().subscribe(d => this.options = d);
+    // this.options$ = this.storeoption.pipe(select(fromOption.selectAll));
     this.options$ = this.svc.getOptions();
-    // this.options$ = this.store.pipe(select(fromOption.selectAll));
+    this.notices$ = this.svc.getNotices();
   }
 }
