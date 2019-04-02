@@ -20,6 +20,7 @@ import * as fromState from './reducers';
   declarations: [ApiTestComponent],
   imports: [
     CommonModule,
+    CoreModule,
     StoreModule.forFeature('user', fromUser.reducer),
     StoreModule.forFeature('option', fromOption.optionReducer),
     StoreModule.forFeature('notice', fromNotice.reducer),

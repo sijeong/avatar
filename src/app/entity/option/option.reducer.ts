@@ -1,6 +1,8 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Option } from './option.model';
 import { OptionActions, OptionActionTypes } from './option.actions';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { selectRemoveDoneTodosDisabled } from '@app/examples/todos/todos.selectors';
 
 export interface OptionState extends EntityState<Option> {
   // additional entities state properties
@@ -53,6 +55,10 @@ export function optionReducer(
       return adapter.addAll(action.payload.options, state);
     }
 
+    // case OptionActionTypes.LoadOptionsSuccess: {
+    //   return adapter.addAll(action.payload.options, state);
+    // }
+
     case OptionActionTypes.ClearOptions: {
       return adapter.removeAll(state);
     }
@@ -62,10 +68,21 @@ export function optionReducer(
     }
   }
 }
-
+///***///
+export const selectOptionState = createFeatureSelector<OptionState>('option');
 export const {
   selectIds,
   selectEntities,
   selectAll,
   selectTotal
 } = adapter.getSelectors();
+
+///***///
+export const selectOptionIds = createSelector(selectOptionState, selectIds);
+///***///
+export const selectOptionEntities = createSelector(
+  selectOptionState,
+  selectEntities
+);
+///***///
+export const selectAllOptions = createSelector(selectOptionState, selectAll);
