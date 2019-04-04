@@ -7,7 +7,6 @@ import { Notice } from '../notice/notice.model';
 import { Observable } from 'rxjs';
 
 import { Store, select } from '@ngrx/store';
-import * as fromNotice from '../notice/notice.reducer';
 import * as fromOption from '../option/option.reducer';
 
 import * as fromStore from '../reducers';
@@ -21,18 +20,18 @@ import { LoadOptions, RequestOptions } from '../option/option.actions';
 export class ApiTestComponent implements OnInit {
   users: User[];
 
-  options: Option[];
+  // options: Option[];
 
   options$: Observable<Option[]> = this.store.pipe(
     select(fromOption.selectAllOptions)
   );
   //  = this.store.pipe(select(selectAll));
   notices$: Observable<Notice[]>;
-  options$: Observable<Option[]>;
+  // options$: Observable<Option[]>;
 
   constructor(
     private svc: FakeService,
-    private storeoption: Store<fromOption.OptionState>
+    private store: Store<fromOption.OptionState>
   ) {}
 
   ngOnInit() {
@@ -42,8 +41,8 @@ export class ApiTestComponent implements OnInit {
     // this.options = this.svc.getOptions();
     // this.svc.getOptions().subscribe(d => this.options = d);
     // this.options$ = this.storeoption.pipe(select(fromOption.selectAll));
-    this.options$ = this.svc.getOptions();
-    this.notices$ = this.svc.getNotices();
+    // this.options$ = this.svc.getOptions();
+    // this.notices$ = this.svc.getNotices();
 
     // this.options$ = this.svc.getOptions();
     // this.options$ = this.store.pipe(select(fromOption.selectAllOptions));

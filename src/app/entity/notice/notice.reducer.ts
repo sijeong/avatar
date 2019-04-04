@@ -1,6 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Notice } from './notice.model';
 import { NoticeActions, NoticeActionTypes } from './notice.actions';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface NoticeState extends EntityState<Notice> {
   // additional entities state properties
@@ -63,9 +64,12 @@ export function reducer(
   }
 }
 
+export const selectNoticeState = createFeatureSelector<NoticeState>('notice');
+
 export const {
   selectIds,
   selectEntities,
   selectAll,
   selectTotal
 } = adapter.getSelectors();
+export const selectAllNotices = createSelector(selectNoticeState, selectAll);

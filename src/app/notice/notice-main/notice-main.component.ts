@@ -3,6 +3,13 @@ import { ApiTestComponent } from '../../entity/api-test/api-test.component';
 import { Observable } from 'rxjs';
 import { Notice } from '@app/entity/notice/notice.model';
 import { FakeService } from '@app/entity/fake.service';
+import {
+  selectAllNotices,
+  NoticeState
+} from '@app/entity/notice/notice.reducer';
+import { Store, select } from '@ngrx/store';
+import * as fromNotice from '../../entity/notice/notice.reducer';
+import { RequestNotices } from '@app/entity/notice/notice.actions';
 
 @Component({
   selector: 'anms-notice-main',
@@ -11,10 +18,12 @@ import { FakeService } from '@app/entity/fake.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NoticeMainComponent implements OnInit {
-  notice$: Observable<Notice[]>;
-  constructor(private svc: FakeService) {}
+  notice$: Observable<Notice[]> = this.store.pipe(
+    select(fromNotice.selectAllNotices)
+  );
+  constructor(private store: Store<fromNotice.NoticeState>) {}
 
   ngOnInit() {
-    this.notice$ = this.svc.getNotices();
+    this.store.dispatch(new RequestNotices());
   }
 }
