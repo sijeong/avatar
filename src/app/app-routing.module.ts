@@ -6,6 +6,7 @@ import { SettingsContainerComponent } from './settings';
 import { UserMainComponent } from './usermanagement/user-main/user-main.component';
 import { OptionMainComponent } from './optionmanagement/option-main/option-main.component';
 import { NoticeMainComponent } from './notice/notice-main/notice-main.component';
+import { ProductMainComponent } from './productManagement/product-main/product-main.component';
 
 const routes: Routes = [
   // {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'optionmanagement',
     component: OptionMainComponent
+  },
+  {
+    path: 'productManagement',
+    component: ProductMainComponent
   }
 ];
 

@@ -8,16 +8,22 @@ import { Option } from './option/option.model';
 import { User } from './user/user.model';
 
 import * as faker from 'faker/locale/en_US';
+import { Product } from './product/product.model';
 
 @Injectable()
 export class InMemWebService implements InMemoryDbService {
   createDb(reqInfo?: RequestInfo) {
+    const userTypes: string[] = ['Administrator', 'Customer'];
     const getUsers = (count = faker.random.number(100)) => {
       const res = [];
       for (let i = 0; i < count; i++) {
         res.push({
           id: faker.random.uuid(),
-          name: faker.name.firstName()
+          name: faker.name.firstName(),
+          imgUrl: faker.image.avatar(),
+          title: faker.company.bsAdjective(),
+          description: faker.lorem.paragraphs(),
+          userType: userTypes[faker.random.number(1)]
         });
       }
 
@@ -48,12 +54,31 @@ export class InMemWebService implements InMemoryDbService {
       }
       return res;
     };
+    const productCategory = ['food', 'goods'];
+
+    const getProducts = (count = faker.random.number(100)) => {
+      const res = [];
+      for (let i = 0; i < count; i++) {
+        let temp = {
+          id: faker.random.uuid(),
+          name: faker.lorem.word(),
+          description: faker.lorem.paragraph(),
+          category: productCategory[faker.random.number(1)]
+        };
+        let addOn = 'imgUrl';
+        temp[addOn] =
+          temp.category === 'food' ? faker.image.food() : faker.image.fashion();
+        res.push();
+      }
+      return res;
+    };
 
     const users: User[] = getUsers(faker.random.number(30));
     const options: Option[] = getOptions(faker.random.number(300));
     const notices: Notice[] = getNotices(faker.random.number(30));
+    const products: Product[] = getProducts(faker.random.number(100));
 
-    const db = { users, options, notices };
+    const db = { users, options, notices, products };
 
     let returnType = 'observable';
 

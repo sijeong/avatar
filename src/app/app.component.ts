@@ -37,7 +37,8 @@ export class AppComponent implements OnInit {
   navigation = [
     { link: 'usermanagement', label: 'avatar.usermgmt' },
     { link: 'optionmanagement', label: 'avatar.optionmgmt' },
-    { link: 'notice', label: 'avatar.notice' }
+    { link: 'notice', label: 'avatar.notice' },
+    { link: 'productManagement', label: 'avatar.product' }
   ];
   navigationSideMenu = [
     ...this.navigation,

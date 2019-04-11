@@ -1,4 +1,20 @@
-<p>
-  user-main works!
-</p>
-{{ users$ | async | json}}
+<div class="user-panel">
+  <h3>Users</h3>
+
+  <mat-tab-group>
+    <mat-tab label="Administrator">
+      <anms-user-card-list [users]="administrators$ | async">
+      </anms-user-card-list>
+    </mat-tab>
+
+    <mat-tab label="Customer">
+      <anms-user-card-list [users]="customers$ | async">
+
+      </anms-user-card-list>
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+</div>
+{{users$ | async | json}}

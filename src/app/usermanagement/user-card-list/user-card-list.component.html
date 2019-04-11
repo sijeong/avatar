@@ -1,0 +1,16 @@
+<mat-card *ngFor="let user of users" class="course-card mat-elevation-z10">
+  <mat-card-header>
+    <mat-card-title> {{user.name}} </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="user.imgUrl">
+
+  <mat-card-content>
+    <p>{{user.description}}</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button class="mat-raised-button mat-primary">
+      VIEW DETAIL
+    </button>
+  </mat-card-actions>
+</mat-card>
