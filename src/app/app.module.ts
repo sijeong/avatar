@@ -18,6 +18,7 @@ import { NoticeModule } from './notice/notice.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemWebService } from './entity/in-mem-web-service';
+import { ProductManagementModule } from './productManagement/product-management.module';
 
 // import { StoreModule } from '@ngrx/store';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -50,6 +51,9 @@ import { InMemWebService } from './entity/in-mem-web-service';
 
     //notice
     NoticeModule,
+
+    //Product
+    ProductManagementModule,
 
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemWebService, {

@@ -1,18 +1,19 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { User } from './user.model';
 import { UserActions, UserActionTypes } from './user.actions';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-export interface State extends EntityState<User> {
+export interface UserState extends EntityState<User> {
   // additional entities state properties
 }
 
 export const adapter: EntityAdapter<User> = createEntityAdapter<User>();
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: UserState = adapter.getInitialState({
   // additional entity state properties
 });
 
-export function reducer(state = initialState, action: UserActions): State {
+export function reducer(state = initialState, action: UserActions): UserState {
   switch (action.type) {
     case UserActionTypes.AddUser: {
       return adapter.addOne(action.payload.user, state);
@@ -46,7 +47,7 @@ export function reducer(state = initialState, action: UserActions): State {
       return adapter.removeMany(action.payload.ids, state);
     }
 
-    case UserActionTypes.LoadUsers: {
+    case UserActionTypes.LoadUsersSuccess: {
       return adapter.addAll(action.payload.users, state);
     }
 
@@ -60,9 +61,11 @@ export function reducer(state = initialState, action: UserActions): State {
   }
 }
 
+export const selectUserState = createFeatureSelector<UserState>('user');
 export const {
   selectIds,
   selectEntities,
   selectAll,
   selectTotal
 } = adapter.getSelectors();
+export const selectAllUsers = createSelector(selectUserState, selectAll);

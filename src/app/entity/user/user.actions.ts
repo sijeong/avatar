@@ -3,7 +3,8 @@ import { Update } from '@ngrx/entity';
 import { User } from './user.model';
 
 export enum UserActionTypes {
-  LoadUsers = '[User] Load Users',
+  RequestUsers = '[User] Request Users',
+  LoadUsersSuccess = '[User] Load Users Success',
   AddUser = '[User] Add User',
   UpsertUser = '[User] Upsert User',
   AddUsers = '[User] Add Users',
@@ -15,8 +16,11 @@ export enum UserActionTypes {
   ClearUsers = '[User] Clear Users'
 }
 
-export class LoadUsers implements Action {
-  readonly type = UserActionTypes.LoadUsers;
+export class RequestUsers implements Action {
+  readonly type = UserActionTypes.RequestUsers;
+}
+export class LoadUsersSuccess implements Action {
+  readonly type = UserActionTypes.LoadUsersSuccess;
 
   constructor(public payload: { users: User[] }) {}
 }
@@ -74,7 +78,8 @@ export class ClearUsers implements Action {
 }
 
 export type UserActions =
-  | LoadUsers
+  | RequestUsers
+  | LoadUsersSuccess
   | AddUser
   | UpsertUser
   | AddUsers

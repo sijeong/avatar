@@ -3,6 +3,7 @@ import { Update } from '@ngrx/entity';
 import { Notice } from './notice.model';
 
 export enum NoticeActionTypes {
+  RequestNotices = '[Notice] Request Notices',
   LoadNotices = '[Notice] Load Notices',
   AddNotice = '[Notice] Add Notice',
   UpsertNotice = '[Notice] Upsert Notice',
@@ -13,6 +14,10 @@ export enum NoticeActionTypes {
   DeleteNotice = '[Notice] Delete Notice',
   DeleteNotices = '[Notice] Delete Notices',
   ClearNotices = '[Notice] Clear Notices'
+}
+
+export class RequestNotices implements Action {
+  readonly type = NoticeActionTypes.RequestNotices;
 }
 
 export class LoadNotices implements Action {
@@ -74,6 +79,7 @@ export class ClearNotices implements Action {
 }
 
 export type NoticeActions =
+  | RequestNotices
   | LoadNotices
   | AddNotice
   | UpsertNotice
