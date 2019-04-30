@@ -190,5 +190,10 @@
   "defaultProject": "angular-ngrx-material-starter",
   "cli": {
     "defaultCollection": "@ngrx/schematics"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }

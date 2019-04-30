@@ -1,3 +1,11 @@
 .full-width-table {
   width: 100%;
 }
+.example-container {
+  height: 600px;
+  overflow: auto;
+}
+
+.select{
+  width: 10%;
+}

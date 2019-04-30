@@ -19,6 +19,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemWebService } from './entity/in-mem-web-service';
 import { ProductManagementModule } from './productManagement/product-management.module';
+import { NoticeFormComponent } from './avatar/notice-form/notice-form.component';
+import {
+  MatInputModule,
+  MatButtonModule,
+  MatSelectModule,
+  MatRadioModule,
+  MatCardModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatGridListModule,
+  MatMenuModule
+} from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MenuComponent } from './avatar/menu/menu.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { NoticeTableComponent } from './avatar/notice-table/notice-table.component';
+import { DashboardComponent } from './avatar/dashboard/dashboard.component';
+import { HomeComponent } from './avatar/home/home.component';
 
 // import { StoreModule } from '@ngrx/store';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -58,12 +81,35 @@ import { ProductManagementModule } from './productManagement/product-management.
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemWebService, {
       passThruUnknownUrl: true
-    })
+    }),
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatGridListModule,
+    MatMenuModule
 
     // StoreModule.forRoot(reducers, { metaReducers }),
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    NoticeFormComponent,
+    MenuComponent,
+    NoticeTableComponent,
+    DashboardComponent,
+    HomeComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

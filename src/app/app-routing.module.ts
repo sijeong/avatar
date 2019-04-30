@@ -7,6 +7,8 @@ import { UserMainComponent } from './usermanagement/user-main/user-main.componen
 import { OptionMainComponent } from './optionmanagement/option-main/option-main.component';
 import { NoticeMainComponent } from './notice/notice-main/notice-main.component';
 import { ProductMainComponent } from './productManagement/product-main/product-main.component';
+import { HomeComponent } from './avatar/home/home.component';
+import { NoticeDetailComponent } from './notice/notice-detail/notice-detail.component';
 
 const routes: Routes = [
   // {
@@ -23,10 +25,14 @@ const routes: Routes = [
   //   path: '**',
   //   redirectTo: 'about'
   // },
+  // {
+  //   path: 'settings',
+  //   component: SettingsContainerComponent,
+  //   data: { title: 'anms.menu.settings' }
+  // },
   {
-    path: 'settings',
-    component: SettingsContainerComponent,
-    data: { title: 'anms.menu.settings' }
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'usermanagement',
@@ -35,6 +41,10 @@ const routes: Routes = [
   {
     path: 'notice',
     component: NoticeMainComponent
+  },
+  {
+    path: 'noticedetail/:id',
+    component: NoticeDetailComponent
   },
   {
     path: 'optionmanagement',
