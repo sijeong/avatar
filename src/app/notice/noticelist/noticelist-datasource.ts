@@ -75,7 +75,7 @@ export class NoticelistDataSource extends DataSource<Notice> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() {}
+  disconnect() { }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -84,6 +84,8 @@ export class NoticelistDataSource extends DataSource<Notice> {
   private getPagedData(data: Notice[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
+
+    // here to transform!!!!!!!!!!!!
   }
 
   /**

@@ -31,6 +31,11 @@ const routes: Routes = [
   //   data: { title: 'anms.menu.settings' }
   // },
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
     component: HomeComponent
   },

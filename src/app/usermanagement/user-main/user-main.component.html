@@ -1,10 +1,12 @@
-<div class="user-panel">
+<div class="user-panel" style="margin: 50px">
   <h3>Users</h3>
 
   <mat-tab-group>
     <mat-tab label="Administrator">
-      <anms-user-card-list [users]="administrators$ | async">
-      </anms-user-card-list>
+      <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGAp="0.5%" fxLayoutAlign="center"> -->
+        <anms-user-card-list [users]="administrators$ | async">
+        </anms-user-card-list>
+      <!-- </div> -->
     </mat-tab>
 
     <mat-tab label="Customer">
@@ -17,4 +19,4 @@
   </mat-tab-group>
 
 </div>
-{{users$ | async | json}}
+<!-- {{users$ | async | json}} -->

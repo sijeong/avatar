@@ -21,9 +21,9 @@ export class NoticelistComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store<fromNotice.NoticeState>
-  ) {}
+  ) { }
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['select', 'id', 'title', 'content'];
+  displayedColumns = ['select', 'number', 'title', 'readCount'];
 
   ngOnInit() {
     this.dataSource = new NoticelistDataSource(
@@ -53,7 +53,7 @@ export class NoticelistComponent implements OnInit {
     }
     return `${
       this.selection.isSelected(row) ? 'deselect' : 'select'
-    } row ${row.id + 1}`;
+      } row ${row.id + 1}`;
   }
 
   alert(id: string) {

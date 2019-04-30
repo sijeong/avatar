@@ -7,7 +7,12 @@ export interface Notice {
   view: number;
   cat1: string;
   cat2: string;
+  readCount: number;
 }
 
-export const cat1 = ['animal', ''];
-export const cat2 = [];
+export const cat1 = ['animal', 'plant', 'virus'];
+export const cat2 = [
+  ['Tiger', 'Lion', 'Human', 'Cat', 'Dog'],
+  ['Pine', 'Rose', 'Potato', 'Sun Flower'],
+  ['Influenza A' ,'Influenza B', 'Influenza C', 'Influenza D']
+];

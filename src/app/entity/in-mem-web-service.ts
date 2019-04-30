@@ -52,15 +52,18 @@ export class InMemWebService implements InMemoryDbService {
     // cat2: string;
     const getNotices = (count = faker.random.number(100)) => {
       const res = [];
+      let rnd = faker.random.number(3);
       for (let i = 0; i < count; i++) {
+
         res.push({
           id: faker.random.uuid(),
           number: i + 1,
           title: faker.lorem.sentence(),
           content: faker.lorem.paragraphs(),
           modified: faker.date.past(),
-          cat1: cat1[faker.random.number(1)],
-          cat2: cat2[faker.random.number(1)]
+          cat1: cat1[rnd],
+          cat2: cat2[rnd][faker.random.number(3)],
+          readCount: faker.random.number(100)
         });
       }
       return res;
@@ -76,9 +79,9 @@ export class InMemWebService implements InMemoryDbService {
           description: faker.lorem.paragraph(),
           category: productCategory[faker.random.number(1)]
         };
-        let addOn = 'imgUrl';
-        temp[addOn] =
-          temp.category === 'food' ? faker.image.food() : faker.image.fashion();
+        // let addOn = 'imgUrl';
+        // temp[addOn] =
+        //   temp.category === 'food' ? faker.image.food() : faker.image.fashion();
         res.push();
       }
       return res;

@@ -48,7 +48,12 @@ import { HomeComponent } from './avatar/home/home.component';
 
 // import {reducers, metaReducers} from './entity/reducers';
 // import { environment } from '../environments/environment';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ChartComponent } from './avatar/chart/chart.component';
+import { RouterModule } from '@angular/router';
+import { NoticeComponent } from './entity/notice/notice/notice.component';
+import { NoticeDetailComponent } from './notice/notice-detail/notice-detail.component';
 @NgModule({
   imports: [
     // angular
@@ -97,10 +102,31 @@ import { HomeComponent } from './avatar/home/home.component';
     MatPaginatorModule,
     MatSortModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
 
     // StoreModule.forRoot(reducers, { metaReducers }),
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
+
+    FlexLayoutModule,
+    NgxChartsModule,
+    RouterModule.forRoot(
+      [
+        {
+          path: "notice",
+          component: NoticeComponent
+        },
+        {
+          path: "noticeDetail",
+          component: NoticeDetailComponent
+        },
+      ],
+      {
+
+        scrollPositionRestoration: "enabled",
+        anchorScrolling: "enabled",
+        enableTracing: false
+      }
+    )
   ],
   declarations: [
     AppComponent,
@@ -108,9 +134,10 @@ import { HomeComponent } from './avatar/home/home.component';
     MenuComponent,
     NoticeTableComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    ChartComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
