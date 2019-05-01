@@ -46,7 +46,7 @@ const routes: Routes = [
     component: ProductMainComponent
   },
   {
-    path:'chart',
+    path: 'chart',
     component: ChartComponent
   }
 ];
