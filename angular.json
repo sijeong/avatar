@@ -125,7 +125,9 @@
                 "input": "src/styles.scss"
               }
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/chart.js/dist/Chart.js"
+            ],
             "assets": [
               {
                 "glob": "favicon.ico",

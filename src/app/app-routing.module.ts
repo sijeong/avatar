@@ -7,6 +7,7 @@ import { UserMainComponent } from './usermanagement/user-main/user-main.componen
 import { OptionMainComponent } from './optionmanagement/option-main/option-main.component';
 import { NoticeMainComponent } from './notice/notice-main/notice-main.component';
 import { ProductMainComponent } from './productManagement/product-main/product-main.component';
+import { ChartComponent } from './services/chart/chart.component';
 
 const routes: Routes = [
   // {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'productManagement',
     component: ProductMainComponent
+  },
+  {
+    path:'chart',
+    component: ChartComponent
   }
 ];
 

@@ -20,6 +20,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemWebService } from './entity/in-mem-web-service';
 import { ProductManagementModule } from './productManagement/product-management.module';
 
+import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from './services/chart/chart.component'
 // import { StoreModule } from '@ngrx/store';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -55,6 +57,9 @@ import { ProductManagementModule } from './productManagement/product-management.
     //Product
     ProductManagementModule,
 
+    //Chart
+    ChartsModule,
+
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemWebService, {
       passThruUnknownUrl: true
@@ -63,7 +68,7 @@ import { ProductManagementModule } from './productManagement/product-management.
     // StoreModule.forRoot(reducers, { metaReducers }),
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, ChartComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
