@@ -54,6 +54,9 @@ import { ChartComponent } from './avatar/chart/chart.component';
 import { RouterModule } from '@angular/router';
 import { NoticeComponent } from './entity/notice/notice/notice.component';
 import { NoticeDetailComponent } from './notice/notice-detail/notice-detail.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 @NgModule({
   imports: [
     // angular
@@ -126,7 +129,8 @@ import { NoticeDetailComponent } from './notice/notice-detail/notice-detail.comp
         anchorScrolling: "enabled",
         enableTracing: false
       }
-    )
+    ),
+    FontAwesomeModule
   ],
   declarations: [
     AppComponent,
@@ -140,4 +144,8 @@ import { NoticeDetailComponent } from './notice/notice-detail/notice-detail.comp
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    library.add(faArrowDown, faArrowUp);
+  }
+}
