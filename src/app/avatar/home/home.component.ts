@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     // ).subscribe(val => console.log(val))
 
 
-    const s2 = Observable.create(function (observer) {
+    const source = Observable.create(function (observer) {
       let seed = 100;
       const interval = setInterval(() => {
         let res = faker.random.number(100000);
