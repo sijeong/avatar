@@ -26,6 +26,7 @@ import { NotificationService } from './notifications/notification.service';
 import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
 
 import { OptionEffects } from '../entity/option/option.effects';
+import { NgOidcClientModule } from 'ng-oidc-client';
 @NgModule({
   imports: [
     // angular
@@ -49,7 +50,21 @@ import { OptionEffects } from '../entity/option/option.effects';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    NgOidcClientModule.forRoot({
+      oidc_config:{
+        authority:'https://localhost:44384',
+        client_id:'ng-oidc-client-identity',
+        redirect_uri:'http://localhost:4200/callback.html',
+        response_type:'id_token token',
+        scope:'openid profile offline_access api1',
+        post_logout_redirect_uri:'http://localhost:4200/signout-callback.html',
+        silent_redirect_uri:'http://localhost:4200/renew-callback.html',
+        accessTokenExpiringNotificationTime:10,
+        automaticSilentRenew: true,
+        //userStore: getWebStorageStateStore
+      }
+    }),
   ],
   declarations: [],
   providers: [

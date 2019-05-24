@@ -35,14 +35,15 @@ export class AppComponent implements OnInit {
   logo = require('../assets/logo.png');
   languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br', 'zh-cn', 'he'];
   navigation = [
+    { link: 'home', label: 'avatar.home' },
     { link: 'usermanagement', label: 'avatar.usermgmt' },
     { link: 'optionmanagement', label: 'avatar.optionmgmt' },
     { link: 'notice', label: 'avatar.notice' },
     { link: 'productManagement', label: 'avatar.product' }
   ];
   navigationSideMenu = [
-    ...this.navigation,
-    { link: 'settings', label: 'anms.menu.settings' }
+    ...this.navigation
+    // { link: 'settings', label: 'anms.menu.settings' }
   ];
 
   isAuthenticated$: Observable<boolean>;

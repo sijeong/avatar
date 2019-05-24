@@ -5,7 +5,9 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 import { Notice } from '../../entity/notice/notice.model';
 import { NoticeMainComponent } from '../notice-main/notice-main.component';
-
+import { select, Store } from '@ngrx/store';
+import * as fromNotice from '../../entity/notice/notice.reducer';
+import { RequestNotices } from '@app/entity/notice/notice.actions';
 // TODO: Replace this with your own data model type
 // export interface NoticelistItem {
 //   name: string;
@@ -13,11 +15,14 @@ import { NoticeMainComponent } from '../notice-main/notice-main.component';
 // }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: Notice[] = [
-  { id: '1', title: 'Hydrogen', content: '' },
-  { id: '2', title: 'Helium', content: '' },
-  { id: '3', title: 'Lithium', content: '' }
-];
+// const notice$: Observable<Notice[]> = this.store.pipe(
+//   select(fromNotice.selectAllNotices)
+// );
+// const EXAMPLE_DATA: Notice[] = [
+//   { id: '1', title: 'Hydrogen', content: '' },
+//   { id: '2', title: 'Helium', content: '' },
+//   { id: '3', title: 'Lithium', content: '' }
+// ];
 
 /**
  * Data source for the Noticelist view. This class should
@@ -25,10 +30,19 @@ const EXAMPLE_DATA: Notice[] = [
  * (including sorting, pagination, and filtering).
  */
 export class NoticelistDataSource extends DataSource<Notice> {
-  data: Notice[] = EXAMPLE_DATA;
+  data: Notice[] = [];
+  notice$: Observable<Notice[]> = this.store.pipe(
+    select(fromNotice.selectAllNotices)
+  );
 
-  constructor(private paginator: MatPaginator, private sort: MatSort) {
+  constructor(
+    private paginator: MatPaginator,
+    private sort: MatSort,
+    private store: Store<fromNotice.NoticeState>
+  ) {
     super();
+    this.store.dispatch(new RequestNotices());
+    this.notice$.subscribe(d => (this.data = d));
   }
 
   /**
@@ -40,13 +54,15 @@ export class NoticelistDataSource extends DataSource<Notice> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
-      observableOf(this.data),
+      // observableOf(this.data),
+      this.notice$,
       this.paginator.page,
       this.sort.sortChange
     ];
 
     // Set the paginator's length
     this.paginator.length = this.data.length;
+    // this.paginator.length = this.notice$..length;
 
     return merge(...dataMutations).pipe(
       map(() => {
@@ -59,7 +75,7 @@ export class NoticelistDataSource extends DataSource<Notice> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() {}
+  disconnect() { }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -68,6 +84,8 @@ export class NoticelistDataSource extends DataSource<Notice> {
   private getPagedData(data: Notice[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
+
+    // here to transform!!!!!!!!!!!!
   }
 
   /**

@@ -12,13 +12,15 @@ import {
   MatPaginatorModule,
   MatSortModule
 } from '@angular/material';
+import { NoticeDetailComponent } from './notice-detail/notice-detail.component';
 
 @NgModule({
   declarations: [
     NoticeMainComponent,
     EditorComponent,
     FormComponent,
-    NoticelistComponent
+    NoticelistComponent,
+    NoticeDetailComponent
   ],
   imports: [
     CommonModule,

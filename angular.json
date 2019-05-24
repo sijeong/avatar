@@ -32,6 +32,16 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/static",
+                "output": "/"
+              },
+              {
+                "glob": "oidc-client.min.js",
+                "input": "node_modules/oidc-client/dist",
+                "output": "/"
               }
             ],
             "styles": [
@@ -192,5 +202,10 @@
   "defaultProject": "angular-ngrx-material-starter",
   "cli": {
     "defaultCollection": "@ngrx/schematics"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }

@@ -7,7 +7,9 @@ import { UserMainComponent } from './usermanagement/user-main/user-main.componen
 import { OptionMainComponent } from './optionmanagement/option-main/option-main.component';
 import { NoticeMainComponent } from './notice/notice-main/notice-main.component';
 import { ProductMainComponent } from './productManagement/product-main/product-main.component';
-import { ChartComponent } from './services/chart/chart.component';
+// import { ChartComponent } from './services/chart/chart.component';
+import { HomeComponent } from './avatar/home/home.component';
+import { NoticeDetailComponent } from './notice/notice-detail/notice-detail.component';
 
 const routes: Routes = [
   // {
@@ -30,12 +32,25 @@ const routes: Routes = [
     data: { title: 'anms.menu.settings' }
   },
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
     path: 'usermanagement',
     component: UserMainComponent
   },
   {
     path: 'notice',
     component: NoticeMainComponent
+  },
+  {
+    path: 'noticedetail/:id',
+    component: NoticeDetailComponent
   },
   {
     path: 'optionmanagement',
@@ -45,10 +60,10 @@ const routes: Routes = [
     path: 'productManagement',
     component: ProductMainComponent
   },
-  {
-    path: 'chart',
-    component: ChartComponent
-  }
+  // {
+  //   path: 'chart',
+  //   component: ChartComponent
+  // }
 ];
 
 @NgModule({

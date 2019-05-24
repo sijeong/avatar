@@ -15,9 +15,11 @@ import { OptionEffects } from './option/option.effects';
 import { ApiTestComponent } from './api-test/api-test.component';
 
 import * as fromState from './reducers';
+import { NoticeComponent } from './notice/notice/notice.component';
+import { OptionComponent } from './option/option/option.component';
 
 @NgModule({
-  declarations: [ApiTestComponent],
+  declarations: [ApiTestComponent, NoticeComponent, OptionComponent],
   imports: [
     CommonModule,
     CoreModule,

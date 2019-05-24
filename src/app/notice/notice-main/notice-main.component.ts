@@ -24,6 +24,6 @@ export class NoticeMainComponent implements OnInit {
   constructor(private store: Store<fromNotice.NoticeState>) {}
 
   ngOnInit() {
-    this.store.dispatch(new RequestNotices());
+    // this.store.dispatch(new RequestNotices());
   }
 }
